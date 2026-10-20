@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./css/site.css" />
+    <link rel="stylesheet" href="./css/registration.css" />
+    <title>BetaX.Chat Регистрация</title>
+</head>
+<body>
+    <main>
+        <header>
+            Регистрация
+        </header>
+        <section>
+            <form>
+                <div>
+                    <label for="name">Имя</label>
+                    <input type="text" id="name" placeholder="Введите имя" />
+                    <span class="error-message hidden">
+                        Имя должно содержать только буквы и быть не менее 2 символов
+                    </span>
+                </div>
+                <div>
+                    <label for="surname">Фамилия</label>
+                    <input type="text" id="surname" placeholder="Введите фамилию" />
+                    <span class="error-message hidden">
+                        Фамилия должна начинаться с буквы и должна содержать только буквы
+                        и не более одного дефиса и быть не менее 2 символов
+                    </span>
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="text" id="email" placeholder="Введите email" autocomplete="on"/>
+                    <span class="error-message hidden">
+                        Введите валидный email
+                    </span>
+                    <span class="error-unique-message hidden">
+                        Такой email уже зарегистрирован
+                    </span>
+                </div>
+                <div>
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" placeholder="Введите пароль" autocomplete="on"/>
+                    <span class="error-message hidden">
+                        Пароль должен быть не менее 8 символов и содержать буквы, цифры и спецсимволы
+                    </span>
+                </div>
+                <div>
+                    <label for="password-confirm">Подтвердите пароль</label>
+                    <input type="password" id="password-confirm" placeholder="Пароль еще раз" autocomplete="on"/>
+                    <span class="error-message hidden">
+                        Пароли не совпадают
+                    </span>
+                </div>
+                <div class="align-center padding-4">
+                    <button id="register">Зарегистрироваться</button>
+                </div>
+            </form>
+            <div class="welcome hidden">
+                Вы успешно зарегистрировались в BetaX.Chat<br />
+                <a href="/login">Войдите</a> в приложение и начните пользоваться чатом
+            </div>
+        </section>
+        <footer>BetaX.Chat&copy;</footer>
+    </main>
+    <script src="js/dist/jquery.js"></script>
+    <script type="module">
+        import init from "./js/registration.js";
+
+        $(init);
+    </script>
+</body>
+</html>

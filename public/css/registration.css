@@ -1,0 +1,59 @@
+﻿main {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+header {
+    padding: 40px;
+    font-size: 24px;
+    color: darkslateblue;
+    text-align: center;
+}
+
+footer {
+    padding: 12px 0 12px 24px;
+    font-size: 20px;
+    color: darkslateblue;
+}
+
+section {
+    height: 100%;
+}
+
+form {
+    width: 240px;
+    margin: 24px auto;
+}
+
+form > div {
+    margin: 4px;
+}
+
+label {
+    padding: 3px 6px;
+    color: rgb(78, 78, 78);
+    font-size: 18px;
+}
+
+.error-message,
+.error-unique-message {
+    color: red;
+    padding: 4px 6px;
+}
+
+#register[data-processing=true] {
+    background-color: rgb(150, 150, 150);
+    color: rgb(225, 225, 225);
+    cursor: initial !important;
+    transform: scale(1) !important;
+}
+
+.welcome {
+    width: 500px;
+    margin: 40px auto;
+    color: green;
+    font-size: 22px;
+    text-align: center;
+}

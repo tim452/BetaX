@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./css/site.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/chat-client.css" />
+    <title>BetaX.Chat</title>
+</head>
+<body>
+    <div class="user"></div>
+    <main>
+        <section class="main-container">
+            <section class="conversations">
+                <div class="participants">
+                    <span class="info">
+                        Найдите собеседника по имени или фамилии
+                    </span>
+                    <input type="text" placeholder="Искать собеседника" />
+                    <div class="list hidden"></div>
+                </div>
+                <div class="align-center padding-4">
+                    <span class="link-button" id="toGroupCreate">Создать групповую беседу</span>
+                </div>
+                <div class="list"></div>
+            </section>
+            <section class="room">
+                <div class="splash">
+                    <span class="text">
+                        Выберите собеседника и начинайте общение
+                    </span>
+                </div>
+                <div class="chat hidden">
+                    <div class="status">
+                        <span class="collaborator"></span>: <span class="value"></span>
+                    </div>
+                    <div class="group-status hidden">
+                        <span class="name"></span>: <span class="group-participants"></span>
+                        <div class="group-actions">
+                            <span class="link-button hidden" id="leaveGroup">Покинуть группу</span>
+                            <div class="participants">
+                                <input type="text" placeholder="Добавить участника" />
+                                <div class="list hidden"></div>
+                            </div>
+                            <span class="link-button hidden" id="dropFromGroup">Удалить участника</span>
+                        </div>
+                    </div>
+                    <div class="messages"></div>
+                    <div class="controls">
+                        <div class="typing-notify"></div>
+                        <div class="content">
+                            <div class="reply-to hidden">
+                                <div class="author"></div>
+                                <div class="reply-content hidden"></div>
+                                <div class="files hidden"></div>
+                            </div>
+                            <textarea placeholder="Введите сообщение" id="content"></textarea>
+                            <div class="attachments hidden"></div>
+                        </div>
+                        <div id="selectFiles" title="Добавить файлы (максимум 10)">
+                            <svg viewBox="0 0 20 20">
+                                <line x1="10" y1="2" x2="10" y2="18"></line>
+                                <line x1="2" y1="10" x2="18" y2="10"></line>
+                            </svg>
+                            <div class="select-files-type hidden">
+                                <span data-file-type="image">Image</span>
+                                <span data-file-type="video">Video</span>
+                                <span data-file-type="audio">Audio</span>
+                            </div>
+                        </div>
+                        <div class="flex column">
+                            <button id="send">Отправить</button>
+                            <button class="hidden" id="cancel">Отмена</button>
+                        </div>
+                        <input type="file" id="files" class="hidden" multiple />
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+    <section class="group-creator under-back">
+        <section class="dialog">
+            <header>Создание групповой беседы</header>
+            <div class="dialog-body">
+                <div class="group-name-container">
+                    <input type="text" id="groupName" placeholder="Введите название группы" />
+                </div>
+                <div class="participants">
+                    <span class="info">
+                        Найдите участников группы по имени или фамилии
+                    </span>
+                    <input type="text" placeholder="Искать участника" />
+                    <div class="list hidden"></div>
+                </div>
+                <div class="participants-list">
+                    <div class="splash">
+                        <span class="text">Выберите участников беседы</span>
+                    </div>
+                </div>
+                <div class="padding-4 align-center">
+                    <button id="cancel-create-group">Отмена</button>
+                    <button id="create-group">Создать группу</button>
+                </div>
+            </div>
+        </section>
+    </section>
+    <script src="js/dist/jquery.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module">
+        import initChat from "./js/chat/ChatClient.js";
+
+        async function init() {
+            const user = await loadUser();
+            showUserInfo(user);
+
+            await initChat(user);
+        }
+
+        async function loadUser() {
+            const response = await fetch("api/auth/info");
+            if (!response.ok) {
+                throw new Error("Can't load user info");
+            }
+
+            return await response.json();
+        }
+
+        function showUserInfo(user) {
+            $(".user").append(`<span>Вы вошли как:</span><span>${user.name} ${user.surname}</span>
+            <span><a href="/api/auth">Выйти</a></span>`);
+        }
+
+        $(init);
+    </script>
+</body>
+</html>

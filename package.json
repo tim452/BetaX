@@ -1,0 +1,33 @@
+{
+  "name": "betax.chat",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "Romanchenko Timur",
+  "license": "ISC",
+  "description": "Simple web chat",
+  "dependencies": {
+    "cookies": "^0.9.1",
+    "uuid": "^8.x",
+    "socket.io": "^4.8.1",
+    "mongoose": "^8.8.3",
+    "mongoose-beautiful-unique-validation": "^7.1.1",
+    "config": "^3.3.12",
+    "koa": "^2.15.3",
+    "koa-router": "^13.0.1",
+    "koa-passport": "^6.x",
+    "koa-session-mongoose": "^3.0.1",
+    "koa-bodyparser": "^4.4.1",
+    "koa-favicon": "^2.1.0",
+    "koa-logger": "^3.2.1",
+    "koa-session": "^6.4.0",
+    "koa-static": "^5.0.0",
+    "koa-send": "^5.0.1",
+    "busboy": "^1.6.0",
+    "lodash": "^4.4.0"
+  }
+}

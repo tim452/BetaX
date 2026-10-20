@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./css/site.css" />
+    <link rel="stylesheet" href="./css/login.css" />
+    <title>BetaX.Chat Вход</title>
+</head>
+<body>
+    <main>
+        <header>
+            Вход
+        </header>
+        <section>
+            <form>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="text" id="email" placeholder="Введите email" autocomplete="on" />
+                </div>
+                <div>
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" placeholder="Введите пароль" autocomplete="on" />
+                </div>
+                <div class="align-center padding-4">
+                    <button id="login">Войти</button>
+                </div>
+                <div class="error hidden">
+                    Не удалось войти в BetaX.Chat<br />
+                    Проверьте email и пароль
+                </div>
+            </form>
+            <div class="welcome">
+                Нет аккаунта в BetaX.Chat? <a href="/registration">Зарегистрируйтесь</a> сейчас
+            </div>
+        </section>
+        <footer>BetaX.Chat&copy;</footer>
+    </main>
+    <script src="js/dist/jquery.js"></script>
+    <script type="module">
+        import init from "./js/login.js";
+
+        $(init);
+    </script>
+</body>
+</html>
