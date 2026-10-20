@@ -1,1 +1,2 @@
 # BetaX.Chat
+Simple chat
